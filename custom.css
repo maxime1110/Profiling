@@ -1,0 +1,3 @@
+slides > slide:not(.nobackground):before {
+  content: "Lucas Mosoni / Pauline Ribeyre / Maxime Bouchet";
+}
