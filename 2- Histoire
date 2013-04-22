@@ -1,0 +1,9 @@
+2 Histoire
+
+  Des outils d'analyse des performances existaient déjà  sur  les plates-formes IBM 360 et IBM 370  à partir des années 1970, généralement basés sur les interruptions d'horloge qui permettaient de détecter les « points chauds » dans l'exécution du code. En 1974, les simulateurs de jeu d’instruction permettaient de faire la trace complète du code et ainsi de tester les programmes et de chercher les erreurs.
+
+  Les programmes de profiling axés sur Unix remontent au moins à 1979, lorsque les systèmes Unix ont inclus un outil de base "prof" qui faisait la liste de chaque fonction utilisée et qui chronométrait l'exécution du programme. En 1982, gprof élargit la notion de profiling en créant un graphe d’appel : c’est un graphique qui représente les relations entre les sous-programmes dans un programme informatique . Plus précisément, chaque nœud représente une procédure et chaque arête (f, g) indique que la procédure f appelle la procédure g.
+
+  En 1994, Amitabh Srivastava et Alan Eustace de Digital Equipment Corporation publient un document décrivant ATOM.  ATOM est une plate-forme pour la conversion d'un programme en son propre profileur. C'est au moment de la compilation que ATOM  insère du code dans le programme à analyser. Ce code inséré en sortie donne des données d'analyse. Cette technique, la modification d'un programme visant s’à analyser lui-même, est appelée « instrumentation ».
+
+  Les outils gprof et ATOM ont eu beaucoup de succès dans les années 2000. 
