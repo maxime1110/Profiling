@@ -1,4 +1,427 @@
-<!--
+<!--<!--
+Google IO 2012 HTML5 Slide Template
+
+Authors:Lucas Mosoni
+	Pauline Ribeyre
+	Maxime Bouchet
+Modified by jH@CKtheRipper, 2/20/13	 
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ISIMA - Prep'ISIMA -Profiling</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="../google_slides/theme/css/default.css">
+  <link rel="stylesheet" media="all" href="./custom.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../google_slides/theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script src="./slide_config.js"></script> 
+  <script data-main="../google_slides/js/slides" src="../google_slides/js/require-1.0.8.min.js" ></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="../google_slides/images/isima.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Introduction</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Introduction</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <i>Le profiling est une analyse du programme et se traduit par des mesures de:</i>
+	<br>
+	<br>
+        <li>l'espace mémoire </li>
+        <li>la complexité du programme</li>
+	<li>la fréquence des appels de fonctions</li>
+	<li>la durée de ces appels</li>
+	<br>
+	<br>
+	<i>Cette analyse a pour but d'optimiser le programme. </i>
+      <ul>
+    </article>
+  </slide>
+
+<slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>L'histoire du profiling</h2>
+    </hgroup>
+  </slide>
+
+
+ 
+
+  <slide>
+    <hgroup>
+      <h2> Histoire</h2>
+    </hgroup>
+    <article>
+      <p><h3>Les années 70</h3></p>
+      <ul class="build">
+        <li>les interruptions d'horloge</li>
+        <li>les simulateurs de jeu d'instruction</li>
+      </ul>
+      <p><h3>Les années 80</h3></p>
+
+      <ul class="build">
+	 <li>gprof</li>
+	 <ul class="build">
+	   <li>liste des fonctions utilisées</li>
+	   <li>chrono</li>
+	   <li>graphe d'appel</li>
+	 </ul>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2> Histoire</h2>
+    </hgroup>
+    <article>
+    
+      <p><h3>Les années 90</h3></p>
+
+      <ul class="build">
+	 <li>ATOM</li>
+	 <ul class="build">
+	   <li>conversion d'un programme en son propre profiler</li>
+	   <li>instrumentation</li>
+	 </ul>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Les outils du profiling</h2>
+    </hgroup>
+  </slide>
+<slide>
+    <hgroup>
+      <h2> Les interruptions</h2>
+    </hgroup>
+    <article>
+      <p><h3>Alarme de processus ou interruption matèrielle</h3></p>
+      <ul class="build">
+        <li>signal d'alerte électronique</li>
+        <li>asynchrone</li>
+      </ul>
+      <p><h3>Interruption logicielle</h3></p>
+	 <ul class="build">
+	   <li>provoquée par une condition exceptionnelle ou une instruction spéciale</li>
+ 		<ul class="build">
+	   <li>pièges/exceptions</li>
+	   <li>interrution voulue par le programmeur</li>
+	 </ul>
+      </ul>
+    </article>
+  </slide>
+  
+
+  <slide>
+    <hgroup>
+      <h2>L'instrumentation</h2>
+    </hgroup>
+   
+    <article>
+ <p><h3></h3></p>
+    
+    Plusieurs fonctions :<br/><br/>
+      <ul class="build">
+        <li><b>1</b> : surveiller ou mesurer le niveau de performance d'un produit</li>
+        <li><b>2</b> : diagnostiquer les erreurs et d'écrire des informations de trace</li>
+        <li><b>3</b> : faire cela automatiquement lors de la compilation</li>
+         <ul class="build"><img src="../google_slides/images/warning.png" class="reflect" alt="Description" title="Description" width="70" height="70%" />
+<br>
+<br>  n
+	 <li> L'instrumentation peut causer des changements de résultats et cela ralentit l'exécution du programme</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Le mode Commandes en détails</h2>
+      <h3>L'équivalent des menus</h3>
+    </hgroup>
+   
+    <article>
+    <p>Commandes clés :</p> 
+      <ul class="build">
+        <li><b>:q</b> : quitter (sans modification)</li>
+        <li><b>:q!</b> : quitter sans sauvegarder</li>
+        <li><b>:w</b> : enregistrer le document</li>
+        <li><b>:wq</b> : enregistrer et quitter (équivalent &rarr; <b>ZZ</b> <img src="./images/isimouse.png"/>)</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Le mode Commandes en détails</h2>
+      <h3>L'équivalent des raccourcis claviers/boutons</h3>
+    </hgroup>
+   
+    <article>
+    <p>Manipulation de texte :</p> 
+      <ul class="build">
+        <li><b>r</b> : remplace le caractère courant</li>
+        <li><b>x</b> : efface (coupe) le caractère courant</li>
+        <li><b>xp</b> : inverse le caractère courant avec le suivant</li>
+        <li><b>u</b> : annuler la dernière action</li>
+        <li><b>[N]dd</b> : coupe N lignes à partir de la courante</li>
+        <li><b>[N]yy</b> : copie N lignes à partir de la courante</li>
+        <li><b>P</b> : colle la/les lignes mémorisées</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Le mode Commandes en détails</h2>
+      <h3>Commandes pour le développement</h3>
+    </hgroup>
+   
+    <article>
+    <p>Manipulation de code source :</p> 
+      <ul class="build">
+        <li><b>:se ai</b> : active l'indentation automatique</li>
+        <li><b>:se noai</b> : désactive l'indentation automatique</li>
+	<br/>
+        <li><b>:se nu</b> : active la numérotation des lignes</li>
+        <li><b>:se nonu</b> : désactive la numérotation des lignes</li>
+	<br/>
+        <li><b>:vsp</b> : coupe l'écran verticalement (2 fichiers côte à côte)</li>
+        <li><b>:tabedit</b> : ouvre un nouvel onglet</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Le mode Commandes en détails</h2>
+      <h3>Le mode visuel</h3>
+    </hgroup>
+   
+    <article>
+    <p>Remplace la souris :</p> 
+      <ul class="build">
+        <li><b>v</b> : entre en mode visuel</li>
+	<br/><br/>
+	<li>Tout déplacement du curseur (flèches directionnelles) modifie la sélection courante</li>
+	<li>La prochaine action réalisée s'applique sur la totalité de la sélection</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar right bottom"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Révisions UNIX</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Exercice 1</h2>
+    </hgroup>
+    <article>
+      <br/><br/><p>Affichez la version de noyau sur la machine que vous utilisez</p>
+   </article>
+   <article class="build">
+      <pre class="prettyprint" data-lang="bash">
+      jopasserat@vapula:~/enseignement/genie_log/slides/seance1$ <b>uname -a</b>
+      Darwin vapula.local 12.2.0 Darwin Kernel Version 12.2.0: Sat Aug 25
+      00:48:52 PDT 2012; root:xnu-2050.18.24~1/RELEASE_X86_64 x86_64
+      </pre>
+   </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Exercice 2</h2>
+    </hgroup>
+    <article>
+      <br/><br/><p>Affichez votre nom d'utilisateur et le nom  de la machine sur laquelle vous travaillez sous la forme suivante :
+   </article>
+   <article class="build fade">
+      <pre class="prettyprint" data-lang="output">
+Utilisateur : jopasserat, machine : vapula.local
+      </pre>
+      <pre class"prettyprint" data-lang="bash">
+jopasserat@vapula:~/enseignement/genie_log/slides/seance1$ <b>echo -n \ 
+"Utilisateur : $USER, machine : ";  echo `hostname`</b>
+Utilisateur : jopasserat, machine : vapula.local
+      </pre>
+   </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Exercice 3</h2>
+    </hgroup>
+    <article>
+      <br/><br/><p>Affichez les informations suivantes sur le CPU :</p>
+      <ul>
+	 <li>Le modèle</li>
+	 <li>La liste des coeurs</li>
+      </ul>
+   </article>
+   <article class="build">
+      <pre class="prettyprint" data-lang="bash">
+      <b>echo "Modèle :" `grep 'model name' /proc/cpuinfo | cut -d':' -f2`</b>
+      <b>echo "Liste des coeurs :" `grep 'core id' /proc/cpuinfo`</b>
+      </pre>
+   </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Exercice 4</h2>
+    </hgroup>
+   <article class="build">
+      <p>Pour chaque élément dans la liste : {pomme poire banane}, créez un répertoire du même nom :</p>
+
+      <pre class="prettyprint" data-lang="bash">
+      <b>for i in pomme poire banane; do mkdir $i; done</b>
+      </pre>
+   </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Exercice 5</h2>
+    </hgroup>
+   <article class="build">
+      <p>Listez tous les fichiers dans votre répertoire personnel portant l'extension <i>.c</i> (ou une autre si vous ne possédez aucun fichier avec cette extension) :</p>
+
+      <pre class="prettyprint" data-lang="bash">
+      <b>find ~ -name '*.c'</b>
+      </pre>
+      <p>Listez tous les fichiers dans votre répertoire personnel dont le nom commence par le caractère 't' (en miniscule ou en majuscule) :</p>
+
+      <pre class="prettyprint" data-lang="bash">
+      <b>find ~ -iname 't*'</b>
+      </pre>
+
+      <p>
+   </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Exercice 6</h2>
+    </hgroup>
+   <article class="build">
+      <p>Listez tous les fichiers dans votre répertoire personnel d'une taille supérieure à 10Ko</p>
+      <pre class="prettyprint" data-lang="bash">
+      <b>find ~ -size +10k</b>
+      </pre>
+
+      <p>Créez 5 fichiers toto : toto0 toto1 toto2 toto3 toto4</p>
+      <p>Listez tous les fichiers dont le nom commence par toto et supprimez les</p>
+      <pre class="prettyprint" data-lang="bash">
+      <b>find ~ -name 'toto*' -exec rm {} \;</b>
+      </pre>
+
+   </article>
+  </slide>
+
+<slide>
+    <hgroup>
+      <h2>Exercice Bonus</h2>
+    </hgroup>
+   <article class="build">
+   <p>Réalisez un script shell bash affichant un menu permettant d'appeler les exercices précédents</p>
+   <p>Indices : </p>
+      <ul class="build">
+	 <li>Placez les commandes des exercices précédents dans des fonctions (mot clé <b>function</b>)</li>
+	 <li>Utilisez la fonction <b>getopts</b></li>
+      </ul>
+   </article>
+</slide>
+
+<slide>
+<hgroup>
+       <h2>Exercice Bonus</h2>
+       <h3>Éléments de solution</h3>
+      </hgroup>
+
+      <pre class="prettyprint" data-lang="bash">
+      <b>
+      exercice="" 
+      while getopts abcd option
+      do
+	 case "$option" in
+	 "a") exercice="$exercice exerice1";;
+	 "b") exercice="$exercice exerice2";;
+	 ...
+	 esac
+      done
+
+      for i in $exercice; do 
+	 eval "$i"
+      done
+	</b>
+	</pre>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <aside class="gdbar right"><img src="../google_slides/images/google_developers_icon_128.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Merci !&gt;</h2>
+      <p>À la semaine prochaine :)</p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
 Google IO 2012 HTML5 Slide Template
 
 Authors:Lucas Mosoni
