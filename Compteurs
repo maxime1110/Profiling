@@ -1,0 +1,5 @@
+Compteurs de performance matérielle
+
+  Un compteur de performance est un mécanisme construit dans les microprocesseurs modernes. Il collecte les données de performance relatives au matériel et est utilisé pour l’analyse des performances à bas niveau.
+  En effet, contrairement aux logiciels de profiling, les compteurs de performance permettent l’accès à des informations de performance bas niveau, liées à l'unité centrale, à la mémoire, etc. De plus, aucune modification du code source n'est nécessaire au fonctionnement d'un compteur.
+  Il existe par exemple des compteurs qui surveillent la plage de temps occupée du processeur, ou l’utilisation de la mémoire.
